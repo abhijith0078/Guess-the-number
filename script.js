@@ -10,15 +10,25 @@ const newGame = document.querySelector(".new-game");
 
 const lowLimit = 1;
 const maxLimit = 30;
-let secretNumber = Math.floor(Math.random() * maxLimit) + 1;
-console.log(secretNumber);
 
-let highScore = 0;
+let highScore = 0,
+  score,
+  secretNumber;
 
-let score = 20;
-
-scoreEl.textContent = score;
 highScoreEl.textContent = highScore;
+
+const reset = function () {
+  score = 20;
+  scoreEl.textContent = score;
+  inputEl.value = "";
+  secretNumber = Math.floor(Math.random() * maxLimit) + 1;
+  document.querySelector(".container").style.backgroundColor =
+    "var(--bg-color)";
+  checkEl.disabled = false;
+  messageEL.textContent = "Try it 💪..";
+  secretNumberBox.textContent = "?";
+};
+reset();
 
 checkEl.addEventListener("click", function () {
   const notEqual = function () {
@@ -32,22 +42,9 @@ checkEl.addEventListener("click", function () {
     }
   };
 
-  let userInput = Number(inputEl.value);
-  console.log(
-    ` inside check user input ${userInput} and secret number ${secretNumber}`
-  );
-  document.querySelector(".container").style.backgroundColor =
-    "var(--bg-color)";
-  if (userInput === 0) {
-    messageEL.textContent = "Not in the range...";
-    document.querySelector(".container").style.backgroundColor = "red";
-  } else if (!userInput) {
-    document.querySelector(".container").style.backgroundColor = "red";
-    messageEL.textContent = "Provide an input😤";
-  } else if (userInput === secretNumber) {
+  const equalNumber = function () {
     secretNumberBox.classList.toggle("pline");
     secretNumberBox.textContent = secretNumber;
-    console.log("passed");
     messageEL.textContent = "Great 👏👏👏";
 
     document.querySelector(".container").style.backgroundColor = "green";
@@ -57,6 +54,19 @@ checkEl.addEventListener("click", function () {
       highScore = score;
       highScoreEl.textContent = highScore;
     }
+  };
+  let userInput = Number(inputEl.value);
+
+  document.querySelector(".container").style.backgroundColor =
+    "var(--bg-color)";
+  if (userInput === 0) {
+    messageEL.textContent = "Not in the range...";
+    document.querySelector(".container").style.backgroundColor = "red";
+  } else if (!userInput) {
+    document.querySelector(".container").style.backgroundColor = "red";
+    messageEL.textContent = "Provide an input😤";
+  } else if (userInput === secretNumber) {
+    equalNumber();
     return;
   } else {
     notEqual();
@@ -74,14 +84,7 @@ checkEl.addEventListener("click", function () {
 });
 
 newGame.addEventListener("click", function () {
-  checkEl.disabled = false;
-  score = 20;
-  scoreEl.textContent = score;
-  inputEl.value = "";
-  secretNumber = Math.floor(Math.random() * maxLimit) + 1;
-  console.log(`secretNumber after reset ${secretNumber}`);
-  document.querySelector(".container").style.backgroundColor =
-    "var(--bg-color)";
+  reset();
+
   secretNumberBox.classList.toggle("pline");
-  secretNumberBox.textContent = "?";
 });
