@@ -1,0 +1,141 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+:root {
+  --primary-color: #fff;
+  --bg-color: rgb(31, 31, 31);
+}
+html {
+  box-sizing: border-box;
+  font-family: "Press Start 2P", cursive;
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-color);
+  color: var(--primary-color);
+  line-height: 1.6;
+}
+.container {
+  border: 0.5px solid #fff;
+  padding: 5rem;
+  position: relative;
+}
+.mt-3 {
+  margin-top: 2.5rem;
+}
+.mt-2 {
+  margin-top: 2rem;
+}
+.mt {
+  margin-top: 1rem;
+}
+
+.new-game {
+  position: absolute;
+  top: 0%;
+  right: 0%;
+}
+.heading {
+  font-size: 2rem;
+}
+.secret-number {
+  display: flex;
+}
+.secret-number::before,
+.secret-number::after {
+  content: "";
+  flex: 1 1;
+
+  border-bottom: 0.2rem solid var(--primary-color);
+  margin: auto;
+}
+.secret-number::before {
+  margin-right: 1rem;
+}
+.secret-number::after {
+  margin-left: 1rem;
+}
+.secret-number__box {
+  display: inline-block;
+  font-size: 1.8rem;
+  padding: 0.3em 0.6em;
+
+  background-color: var(--primary-color);
+  color: var(--bg-color);
+}
+.pline {
+  padding-inline: 2em !important;
+}
+
+.condition {
+  display: flex;
+  justify-content: center;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+}
+.side {
+  display: flex;
+  padding-block: 1rem;
+}
+.side__left {
+  padding-block: 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.input-number[type="number"] {
+  font-size: 1.4rem;
+  padding: 0.6em 1em;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  background-color: var(--bg-color);
+  border-radius: 0.5em;
+  width: 25%;
+}
+.input-number[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.input-number[type="number"]:focus-within {
+  outline: none;
+}
+.btn {
+  cursor: pointer;
+  font-family: inherit;
+  background-color: var(--primary-color);
+  color: var(--bg-color);
+  border: none;
+  font-size: 1rem;
+  padding: 0.6em 0.8em;
+  border-radius: 0.1em;
+}
+.btn:hover {
+  background-color: rgba(255, 255, 255, 0.815);
+}
+.check:disabled {
+  background-color: rgba(255, 255, 255, 0.267);
+  color: rgba(0, 0, 0, 0.5);
+}
+.side__right {
+  flex: 1;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+.info {
+  position: absolute;
+  padding: 1em;
+  background-color: var(--primary-color);
+  color: var(--bg-color);
+  bottom: 0;
+  right: 0;
+}
