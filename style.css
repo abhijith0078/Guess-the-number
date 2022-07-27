@@ -99,7 +99,8 @@ body {
   color: var(--primary-color);
   background-color: var(--bg-color);
   border-radius: 0.5em;
-  width: 25%;
+  width: 30%;
+  text-align: center;
 }
 .input-number[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
